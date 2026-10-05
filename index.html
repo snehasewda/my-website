@@ -4,158 +4,725 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dance Class Registration</title>
+    <title>SS Academy | Dance Classes</title>
 
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background: #f5f0ff;
+            background: #fff8fc;
             color: #222;
         }
 
+        /* ---------- HEADER ---------- */
+
         header {
+            background: linear-gradient(135deg, #6a1b9a, #ad1457);
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 12px;
+            letter-spacing: 3px;
+            font-weight: normal;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- HERO ---------- */
+
+        .hero {
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 8%;
+            background: linear-gradient(120deg, #fce4ec, #f3e5f5);
+            gap: 40px;
+        }
+
+        .hero-text {
+            max-width: 550px;
+        }
+
+        .hero-text h1 {
+            font-size: 55px;
+            color: #6a1b9a;
+            margin-bottom: 15px;
+        }
+
+        .hero-text h2 {
+            font-size: 28px;
+            color: #ad1457;
+            margin-bottom: 18px;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 14px 28px;
             background: #6a1b9a;
             color: white;
-            text-align: center;
-            padding: 25px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
         }
 
-        header h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
+        .hero-btn:hover {
+            background: #4a126d;
         }
 
-        header p {
-            font-size: 16px;
+        .hero-image {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        .container {
-            max-width: 500px;
-            margin: 40px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .container h2 {
+        /* ---------- GENERAL ---------- */
+
+        section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
             text-align: center;
             color: #6a1b9a;
-            margin-bottom: 25px;
+            font-size: 34px;
+            margin-bottom: 40px;
+        }
+
+        /* ---------- ABOUT ---------- */
+
+        .about {
+            text-align: center;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .about p {
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        /* ---------- CLASSES ---------- */
+
+        .classes {
+            background: #f7eefb;
+        }
+
+        .class-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .class-card {
+            background: white;
+            width: 230px;
+            padding: 28px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .class-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .class-card h3 {
+            color: #ad1457;
+            margin-bottom: 12px;
+        }
+
+        .class-card p {
+            line-height: 1.6;
+        }
+
+        /* ---------- REGISTRATION ---------- */
+
+        .registration-box {
+            max-width: 550px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.12);
         }
 
         label {
             display: block;
-            margin-top: 15px;
-            margin-bottom: 6px;
+            margin-top: 16px;
+            margin-bottom: 7px;
             font-weight: bold;
         }
 
-        input, select {
+        input,
+        select {
             width: 100%;
-            padding: 12px;
+            padding: 13px;
             border: 1px solid #ccc;
             border-radius: 8px;
             font-size: 15px;
         }
 
-        button {
+        .register-btn {
             width: 100%;
             margin-top: 25px;
-            padding: 13px;
+            padding: 14px;
             border: none;
             border-radius: 8px;
             background: #6a1b9a;
             color: white;
             font-size: 17px;
+            font-weight: bold;
             cursor: pointer;
         }
 
-        button:hover {
+        .register-btn:hover {
             background: #4a126d;
         }
 
-        #message {
+        /* ---------- SUCCESS ---------- */
+
+        #success {
             display: none;
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .success-message {
             background: #e8f5e9;
             color: #2e7d32;
-            border-radius: 8px;
-            text-align: center;
+            padding: 18px;
+            border-radius: 10px;
             font-weight: bold;
         }
 
-        footer {
+        /* ---------- SCHEDULE ---------- */
+
+        #schedule {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .schedule-title {
             text-align: center;
-            padding: 20px;
-            color: #666;
+            color: #6a1b9a;
+            margin-bottom: 20px;
+        }
+
+        .schedule-card {
+            background: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .schedule-info h3 {
+            color: #ad1457;
+            margin-bottom: 6px;
+        }
+
+        .join-btn {
+            background: #6a1b9a;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .join-btn:hover {
+            background: #4a126d;
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        footer {
+            background: #32103f;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* ---------- MOBILE ---------- */
+
+        @media (max-width: 768px) {
+
+            header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin: 0 8px;
+                font-size: 14px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 45px 5%;
+            }
+
+            .hero-text h1 {
+                font-size: 42px;
+            }
+
+            .hero-image {
+                width: 280px;
+                height: 280px;
+            }
+
+            .schedule-card {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 
 <body>
 
+    <!-- HEADER -->
+
     <header>
-        <h1>💃 Dance Academy</h1>
-        <p>Learn • Dance • Enjoy</p>
-    </header>
 
-    <div class="container">
-
-        <h2>Class Registration</h2>
-
-        <form id="registrationForm">
-
-            <label for="name">Full Name</label>
-            <input type="text" id="name" placeholder="Enter your name" required>
-
-            <label for="age">Age</label>
-            <input type="number" id="age" placeholder="Enter your age" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter your email" required>
-
-            <label for="dance">Select Dance Style</label>
-            <select id="dance" required>
-                <option value="">-- Select --</option>
-                <option>Bollywood</option>
-                <option>Hip Hop</option>
-                <option>Classical</option>
-                <option>Contemporary</option>
-                <option>Free Style</option>
-            </select>
-
-            <button type="submit">Register Now</button>
-
-        </form>
-
-        <div id="message">
-            🎉 Registration Successful!
+        <div class="logo">
+            SS ACADEMY
+            <span>DANCE • LEARN • PERFORM</span>
         </div>
 
-    </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#classes">Classes</a>
+            <a href="#register">Register</a>
+        </nav>
+
+    </header>
+
+
+    <!-- HERO SECTION -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-text">
+
+            <h1>SS Academy</h1>
+
+            <h2>Dance With Passion 💃</h2>
+
+            <p>
+                Discover your talent, improve your skills and
+                express yourself through dance.
+                Join SS Academy and start your dance journey today.
+            </p>
+
+            <a href="#register" class="hero-btn">
+                Register Now
+            </a>
+
+        </div>
+
+
+        <div class="hero-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?auto=format&fit=crop&w=700&q=80"
+                alt="Dancing Girl"
+            >
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section>
+
+        <h2 class="section-title">About SS Academy</h2>
+
+        <div class="about">
+
+            <p>
+                SS Academy is a place where students can learn
+                different forms of dance in a friendly and
+                creative environment. Our goal is to help students
+                develop confidence, creativity and dancing skills.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CLASSES -->
+
+    <section class="classes" id="classes">
+
+        <h2 class="section-title">
+            Our Dance Classes
+        </h2>
+
+        <div class="class-container">
+
+            <div class="class-card">
+                <h3>💃 Bollywood</h3>
+                <p>
+                    Fun Bollywood dance moves and energetic
+                    choreography.
+                </p>
+            </div>
+
+            <div class="class-card">
+                <h3>🔥 Hip Hop</h3>
+                <p>
+                    Learn modern hip hop moves and freestyle.
+                </p>
+            </div>
+
+            <div class="class-card">
+                <h3>🌸 Classical</h3>
+                <p>
+                    Learn traditional Indian classical dance.
+                </p>
+            </div>
+
+            <div class="class-card">
+                <h3>✨ Contemporary</h3>
+                <p>
+                    Express emotions through creative movement.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- REGISTRATION -->
+
+    <section id="register">
+
+        <h2 class="section-title">
+            Class Registration
+        </h2>
+
+        <div class="registration-box">
+
+            <form id="registrationForm">
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+
+                <label for="age">
+                    Age
+                </label>
+
+                <input
+                    type="number"
+                    id="age"
+                    placeholder="Enter your age"
+                    required
+                >
+
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label for="dance">
+                    Select Dance Style
+                </label>
+
+                <select id="dance" required>
+
+                    <option value="">
+                        -- Select Dance Style --
+                    </option>
+
+                    <option value="Bollywood">
+                        Bollywood
+                    </option>
+
+                    <option value="Hip Hop">
+                        Hip Hop
+                    </option>
+
+                    <option value="Classical">
+                        Classical
+                    </option>
+
+                    <option value="Contemporary">
+                        Contemporary
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="submit"
+                    class="register-btn"
+                >
+                    Register Now
+                </button>
+
+            </form>
+
+
+            <!-- SUCCESS MESSAGE -->
+
+            <div id="success">
+
+                <div class="success-message">
+
+                    🎉 Registration Successful!
+
+                    <br><br>
+
+                    Welcome to SS Academy!
+
+                </div>
+
+
+                <!-- SCHEDULE -->
+
+                <div id="schedule">
+
+                    <h3 class="schedule-title">
+                        📅 Your Dance Class Schedule
+                    </h3>
+
+
+                    <div class="schedule-card">
+
+                        <div class="schedule-info">
+
+                            <h3 id="selectedDance">
+                                Dance Class
+                            </h3>
+
+                            <p>
+                                📅 Monday
+                            </p>
+
+                            <p>
+                                ⏰ 5:00 PM
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="#"
+                            class="join-btn"
+                            onclick="joinClass(event)"
+                        >
+                            Join Class
+                        </a>
+
+                    </div>
+
+
+                    <div class="schedule-card">
+
+                        <div class="schedule-info">
+
+                            <h3>
+                                Practice Session
+                            </h3>
+
+                            <p>
+                                📅 Wednesday
+                            </p>
+
+                            <p>
+                                ⏰ 6:00 PM
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="#"
+                            class="join-btn"
+                            onclick="joinClass(event)"
+                        >
+                            Join Class
+                        </a>
+
+                    </div>
+
+
+                    <div class="schedule-card">
+
+                        <div class="schedule-info">
+
+                            <h3>
+                                Weekend Dance Class
+                            </h3>
+
+                            <p>
+                                📅 Saturday
+                            </p>
+
+                            <p>
+                                ⏰ 5:30 PM
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="#"
+                            class="join-btn"
+                            onclick="joinClass(event)"
+                        >
+                            Join Class
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
 
     <footer>
-        © 2026 Dance Academy
+
+        <p>
+            © 2026 SS Academy | Dance • Learn • Perform
+        </p>
+
     </footer>
 
+
+    <!-- JAVASCRIPT -->
+
     <script>
-        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+
+        document
+        .getElementById("registrationForm")
+        .addEventListener("submit", function(event) {
 
             event.preventDefault();
 
-            document.getElementById("message").style.display = "block";
+            let studentName =
+                document.getElementById("name").value;
 
-            document.getElementById("registrationForm").reset();
+            let danceStyle =
+                document.getElementById("dance").value;
+
+
+            document.getElementById("selectedDance")
+                .innerText = danceStyle + " Class";
+
+
+            document.getElementById("success")
+                .style.display = "block";
+
+
+            document.getElementById("schedule")
+                .style.display = "block";
+
+
+            document.getElementById("registrationForm")
+                .style.display = "none";
+
+
+            document.getElementById("success")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
 
         });
+
+
+        function joinClass(event) {
+
+            event.preventDefault();
+
+            alert(
+                "🎉 Welcome to SS Academy!\n\n" +
+                "Your class joining session is ready."
+            );
+
+        }
+
     </script>
 
 </body>
