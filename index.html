@@ -671,6 +671,7 @@
     </footer>
 
 
+    <!-- JAVASCRIPT -->
 <script type="module">
 
 import { initializeApp }
@@ -683,42 +684,63 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
+    <script>
 
+        document
+        .getElementById("registrationForm")
+        .addEventListener("submit", function(event) {
 // YAHAN APNA EXISTING firebaseConfig RAKHO
 const firebaseConfig = {
     // Tumhara jo Firebase config already neeche hai,
     // wahi yahan rehne do.
 };
 
+            event.preventDefault();
 
+            let studentName =
+                document.getElementById("name").value;
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+            let danceStyle =
+                document.getElementById("dance").value;
 
 // REGISTRATION
 document.getElementById("registrationForm")
 .addEventListener("submit", async function(event) {
 
+            document.getElementById("selectedDance")
+                .innerText = danceStyle + " Class";
     event.preventDefault();
 
     const studentName =
         document.getElementById("name").value;
 
+            document.getElementById("success")
+                .style.display = "block";
     const studentAge =
         document.getElementById("age").value;
 
     const studentEmail =
         document.getElementById("email").value;
 
+            document.getElementById("schedule")
+                .style.display = "block";
     const danceStyle =
         document.getElementById("dance").value;
 
 
+            document.getElementById("registrationForm")
+                .style.display = "none";
     try {
 
         // Firebase me registration save
         await addDoc(collection(db, "registration"), {
 
+            document.getElementById("success")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
             name: studentName,
             age: Number(studentAge),
             email: studentEmail,
@@ -727,16 +749,23 @@ document.getElementById("registrationForm")
         });
 
 
+        function joinClass(event) {
         // Website par success
         document.getElementById("selectedDance")
         .innerText = danceStyle + " Class";
 
+            event.preventDefault();
         document.getElementById("success")
         .style.display = "block";
 
+            alert(
+                "🎉 Welcome to SS Academy!\n\n" +
+                "Your class joining session is ready."
+            );
         document.getElementById("schedule")
         .style.display = "block";
 
+        }
         document.getElementById("registrationForm")
         .style.display = "none";
 
@@ -773,7 +802,34 @@ window.joinClass = function(event) {
 
 </script>   
 
+    </script>
+  
+<script type="module">
 
-   
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc
+}
+from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCsWS_c9S75TMIYvt9bQRsumazlSsemfwg",
+  authDomain: "ss-academy-5fb73.firebaseapp.com",
+  projectId: "ss-academy-5fb73",
+  storageBucket: "ss-academy-5fb73.firebasestorage.app",
+  messagingSenderId: "1095803895508",
+  appId: "1:1095803895508:web:d89343e1b2808a559d0541",
+  measurementId: "G-4XVMYD9P9Y"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+</script>
 </body>
 </html>
+    
