@@ -773,54 +773,7 @@ window.joinClass = function(event) {
 
 </script>   
 
-<script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-
-import {
-    getFirestore,
-    collection,
-    addDoc
-}
-from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCsWS_c9S75TMIYvt9bQRsumazlSsemfwg",
-  authDomain: "ss-academy-5fb73.firebaseapp.com",
-  projectId: "ss-academy-5fb73",
-  storageBucket: "ss-academy-5fb73.firebasestorage.app",
-  messagingSenderId: "1095803895508",
-  appId: "1:1095803895508:web:d89343e1b2808a559d0541",
-  measurementId: "G-4XVMYD9P9Y"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-</script>
-    <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const registerButton = Array.from(
-        document.querySelectorAll("button, input[type='submit']")
-    ).find(button =>
-        button.textContent?.trim().toLowerCase() === "register" ||
-        button.value?.trim().toLowerCase() === "register"
-    );
-
-    const successMessage = document.querySelector(".success");
-
-    if (successMessage) {
-        successMessage.style.display = "none";
-    }
-
-    if (registerButton && successMessage) {
-        registerButton.addEventListener("click", function () {
-            successMessage.textContent = "Registration successfully!";
-            successMessage.style.display = "block";
-        });
-    }
-});
-</script>
+   
 </body>
 </html>
